@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeaveLoom — Leave, made lighter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loginView" class="login-wrap">
+    <section class="login-art">
+      <div class="brand brand-light"><span class="brand-mark">l.</span><span>leaveloom</span></div>
+      <div class="art-copy">
+        <span class="eyebrow">A LITTLE MORE BALANCE</span>
+        <h1>Make room<br>for <em>life.</em></h1>
+        <p>Time away matters. Make every leave request feel simple, clear and considered.</p>
+      </div>
+      <div class="art-bottom"><span>People first. Always.</span><span>01 / 04</span></div>
+      <div class="sun-shape"></div>
+    </section>
+    <section class="login-panel">
+      <div class="login-box">
+        <span class="eyebrow green">WELCOME BACK</span>
+        <h2>Your time,<br>beautifully managed.</h2>
+        <p class="muted">Sign in to your people space.</p>
+        <form id="loginForm">
+          <label>Email address<input id="email" type="email" placeholder="you@company.com" required></label>
+          <label>Password<input id="password" type="password" placeholder="Enter your password" required></label>
+          <button class="btn btn-primary full" type="submit">Sign in <span>↗</span></button>
+          <p id="loginError" class="error"></p>
+        </form>
+        <p class="auth-switch">New to LeaveLoom? <button type="button" id="showSignup">Create an account</button></p>
+        <form id="signupForm" class="hidden">
+          <label>Full name<input id="signupName" type="text" placeholder="Your full name" required></label>
+          <label>Email address<input id="signupEmail" type="email" placeholder="you@company.com" required></label>
+          <div class="signup-two">
+            <label>Department<input id="signupDepartment" type="text" placeholder="e.g. Design" required></label>
+            <label>Designation<input id="signupDesignation" type="text" placeholder="e.g. Designer" required></label>
+          </div>
+          <label>Create password<input id="signupPassword" type="password" minlength="8" placeholder="At least 8 characters" required></label>
+          <label>Confirm password<input id="signupConfirm" type="password" minlength="8" placeholder="Re-enter password" required></label>
+          <button class="btn btn-primary full" type="submit">Create account <span>↗</span></button>
+          <p id="signupMessage" class="error"></p>
+          <p class="auth-switch">Already have an account? <button type="button" id="showLogin">Sign in</button></p>
+          <small class="approval-note">New accounts need admin approval before you can sign in.</small>
+        </form>
+        <div class="demo-box" id="demoBox">
+          <strong>Explore with a demo account</strong>
+          <div><button type="button" data-demo="employee">Employee</button><button type="button" data-demo="manager">Manager</button><button type="button" data-demo="admin">Admin</button></div>
+          <small>Demo passwords are prefilled when you choose a role.</small>
+        </div>
+        <p class="login-foot">A calmer way to manage time off · LeaveLoom</p>
+      </div>
+    </section>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">l.</span><span>leaveloom</span></a>
+      <div class="workspace"><span class="workspace-dot"></span><div><b>Northstar Studio</b><small>People workspace</small></div><span class="chevron">⌄</span></div>
+      <div class="nav-label">WORKSPACE</div>
+      <nav>
+        <button class="nav-item active" data-page="overview"><span>◫</span> Overview</button>
+        <button class="nav-item" data-page="requests"><span>▤</span> Leave requests <i id="pendingBadge" class="nav-badge">0</i></button>
+        <button class="nav-item" data-page="apply"><span>＋</span> Apply for leave</button>
+        <button class="nav-item manager-only hidden" data-page="people"><span>♙</span> People directory</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon">✳</span><b>Need a hand?</b><p>Your people team is here to help.</p><a href="mailto:people@northstar.example">Contact people team ↗</a></div>
+        <button class="profile" id="logoutBtn"><span class="avatar" id="userInitials">TM</span><span class="profile-copy"><b id="userName">Taylor Morgan</b><small id="userRole">Employee</small></span><span class="logout">↗</span></button>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <b id="crumb">Overview</b></div><div class="top-actions"><span class="today" id="todayLabel"></span><span class="top-avatar" id="topInitials">TM</span></div></header>
+      <div class="page-content">
+        <section id="overviewPage" class="page">
+          <div class="welcome-row"><div><span class="eyebrow green">YOUR PEOPLE SPACE</span><h1 id="welcomeTitle">A little space to breathe.</h1><p class="muted" id="welcomeSub">Here’s what’s happening with your time away.</p></div><button class="btn btn-primary" data-go="apply">＋ New leave request</button></div>
+          <div class="hero-strip"><div><span class="hero-kicker">THE ART OF TAKING A BREAK</span><h2>Rest is part of<br>the <em>work.</em></h2><p>Plan your time. We’ll take care of the paperwork.</p></div><div class="hero-art"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="hero-spark">✳</div><div class="hero-note">pause<br>is productive.</div></div></div>
+          <div class="section-heading"><div><span class="eyebrow">AT A GLANCE</span><h2>Your leave overview</h2></div><span class="subtle">Live workspace snapshot</span></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span>All requests</span><span class="stat-icon lilac">▤</span></div><strong id="statTotal">0</strong><small>Requests on record</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Waiting for review</span><span class="stat-icon amber">◷</span></div><strong id="statPending">0</strong><small>Needs a decision</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Approved</span><span class="stat-icon mint">✓</span></div><strong id="statApproved">0</strong><small>Time to look forward to</small></article>
+            <article class="stat-card"><div class="stat-top"><span>People</span><span class="stat-icon peach">♙</span></div><strong id="statPeople">0</strong><small>In your workspace</small></article>
+          </div>
+          <div class="lower-grid">
+            <section class="surface recent-panel"><div class="panel-heading"><div><span class="eyebrow">THE LATEST</span><h3>Recent requests</h3></div><button class="text-btn" data-go="requests">View all ↗</button></div><div id="recentList" class="recent-list"></div></section>
+            <section class="surface quote-panel"><span class="quote-mark">“</span><p>Almost everything will work again if you unplug it for a few minutes, including you.</p><small>— Anne Lamott</small><div class="quote-decoration">✳</div></section>
+          </div>
+        </section>
+
+        <section id="applyPage" class="page hidden">
+          <div class="page-title"><span class="eyebrow green">MAKE SOME SPACE</span><h1>Request time away.</h1><p class="muted">A few details, and your request is on its way.</p></div>
+          <div class="form-layout"><form id="leaveForm" class="surface leave-form">
+            <div class="form-heading"><span class="form-step">01</span><div><h3>Leave details</h3><p>Tell us a little about your planned time off.</p></div></div>
+            <label>Type of leave<select id="leaveType" required><option value="">Choose a leave type</option></select></label>
+            <div class="two-fields"><label>From date<input id="fromDate" type="date" required></label><label>To date<input id="toDate" type="date" required></label></div>
+            <label>Reason for leave<textarea id="reason" rows="4" placeholder="Share a little context for your manager..." required></textarea></label>
+            <div class="form-note"><span>✳</span><p>Your manager will be notified once you submit. You can track the decision in your requests.</p></div>
+            <div class="form-actions"><button type="button" class="btn btn-quiet" data-go="overview">Cancel</button><button class="btn btn-primary" type="submit">Send request ↗</button></div>
+            <p id="formMessage" class="form-message"></p>
+          </form><aside class="leave-aside"><div class="aside-illustration">☼</div><span class="eyebrow">A FRIENDLY REMINDER</span><h3>Good things grow<br>with a little pause.</h3><p>Try to give your team a heads-up before planned time off. It helps everyone plan with ease.</p><div class="aside-line"></div><small>Take care of yourself. The rest can wait.</small></aside></div>
+        </section>
+
+        <section id="requestsPage" class="page hidden">
+          <div class="page-title page-title-row"><div><span class="eyebrow green">THE PAPER TRAIL, SIMPLIFIED</span><h1>Leave requests.</h1><p class="muted">Every request, one clear place.</p></div><button class="btn btn-primary" data-go="apply">＋ New request</button></div>
+          <div class="filter-row"><div class="filter-tabs"><button class="filter active" data-filter="All">All requests</button><button class="filter" data-filter="Pending">Pending</button><button class="filter" data-filter="Approved">Approved</button><button class="filter" data-filter="Rejected">Declined</button></div><input id="requestSearch" class="search-input" placeholder="⌕  Search requests..."></div>
+          <div class="surface table-wrap"><table><thead><tr><th>PERSON</th><th>LEAVE TYPE</th><th>DATES</th><th>STATUS</th><th>REASON</th><th class="manager-only hidden">ACTION</th></tr></thead><tbody id="requestRows"></tbody></table><div id="emptyRequests" class="empty-state hidden"><span>✳</span><h3>No requests here yet</h3><p>When a leave request appears, it’ll find its place here.</p></div></div>
+        </section>
+
+        <section id="peoplePage" class="page hidden">
+          <div class="page-title"><span class="eyebrow green">THE PEOPLE BEHIND THE WORK</span><h1>People directory.</h1><p class="muted">A quick look at your Northstar Studio team.</p></div>
+          <section id="pendingAccountsPanel" class="surface pending-accounts hidden">
+            <div class="panel-heading"><div><span class="eyebrow">ACCOUNT ACCESS</span><h3>Signup approvals</h3></div><span class="subtle">Admin review</span></div>
+            <div id="pendingAccountsList"></div>
+          </section>
+          <div id="peopleGrid" class="people-grid"></div>
+        </section>
+      </div>
+      <footer class="footer"><span>© 2026 LeaveLoom</span><span>Made for people, not paperwork <b>✳</b></span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast"></div>
+  <div id="decisionModal" class="modal hidden"><div class="modal-card"><button id="closeModal" class="modal-close">×</button><span class="eyebrow green">MANAGER REVIEW</span><h2 id="decisionTitle">Review request</h2><p class="muted">Add an optional note for the employee.</p><textarea id="managerComment" rows="3" placeholder="A short note..."></textarea><div class="modal-actions"><button id="rejectBtn" class="btn btn-danger">Decline</button><button id="approveBtn" class="btn btn-primary">Approve ↗</button></div></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
